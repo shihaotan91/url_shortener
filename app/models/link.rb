@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class Link < ApplicationRecord
-  validates :long_url, presence: true,
-                       length: { minimum: 8, maximum: 255 }
+  before_create :sanitize_long_url
 
+  validates :long_url, presence: true
   validates :short_url, presence: true,
                         uniqueness: true
+
+  def sanitize_long_url
+    self.long_url = LongUrlSanitizer.new(long_url).sanitize
+  end
 end
