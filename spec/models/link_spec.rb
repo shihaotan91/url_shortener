@@ -10,6 +10,7 @@ RSpec.describe Link, type: :model do
   describe 'validations' do
     context 'disable callbacks' do
       before do
+        allow_any_instance_of(Link).to receive(:sanitize_long_url)
         allow_any_instance_of(Link).to receive(:generate_salt)
         allow_any_instance_of(Link).to receive(:generate_short_url)
       end
