@@ -1,0 +1,6 @@
+<%= form_for @link do |form| %>
+  <%= form.text_field :long_url %>
+  <%= form.submit "Create" %>
+<% end %>
+
+<%= @link.errors.full_messages.to_sentence %>
