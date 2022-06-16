@@ -4,6 +4,8 @@ class LongUrlSanitizer
   end
 
   def sanitize
+    return nil if @long_url.blank?
+
     remove_white_spaces
     add_leading_http
     add_trailing_default_domain

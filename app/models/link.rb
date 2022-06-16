@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class Link < ApplicationRecord
-  before_create :sanitize_long_url
-  before_validation :generate_salt, :generate_short_url, on: [:create]
+  before_validation :sanitize_long_url, :generate_salt, :generate_short_url, on: [:create]
 
   validates :long_url, :short_url, :salt, presence: true
   validates :short_url, uniqueness: true
@@ -16,6 +15,7 @@ class Link < ApplicationRecord
   end
 
   def generate_short_url
-
+    message = "#{long_url}_#{ENV["SALT"]}_#{salt}"
+    self.short_url = ShortUrlGenerator.new(message).generate
   end
 end
