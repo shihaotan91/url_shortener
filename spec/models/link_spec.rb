@@ -9,9 +9,16 @@ RSpec.describe Link, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:long_url) }
-
     it { is_expected.to validate_presence_of(:short_url) }
     it { is_expected.to validate_uniqueness_of(:short_url) }
+
+    context 'disable callbacks' do
+      before do
+        allow_any_instance_of(Link).to receive(:generate_salt)
+      end
+
+      it { is_expected.to validate_presence_of(:salt) }
+    end
   end
 
   describe 'callbacks' do
