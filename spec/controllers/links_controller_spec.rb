@@ -45,7 +45,7 @@ RSpec.describe LinksController, type: :controller do
       it 'renders the show page' do
         is_expected.to render_template(:show)
         expect(assigns(:link)).to eq(created_link)
-        expect(assigns(:short_url)).to eq("#{ENV['ROOT_URL']}/#{created_link.short_url}")
+        expect(assigns(:short_url)).to eq("#{request.base_url}/#{created_link.short_url}")
       end
     end
 

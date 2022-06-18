@@ -8,7 +8,9 @@
 
 require 'open-uri'
 
-domain_list = URI.open(ENV['DOMAIN_LIST']).as_json
+DOMAIN_LIST = 'https://data.iana.org/TLD/tlds-alpha-by-domain.txt'.freeze
+
+domain_list = URI.open(DOMAIN_LIST).as_json
 domain_list.each do |domain|
   next unless domain.match(/^[a-zA-Z]+$/)
 

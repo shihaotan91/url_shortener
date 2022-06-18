@@ -15,7 +15,7 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
-    @short_url = "#{ENV['ROOT_URL']}/#{@link.short_url}"
+    @short_url = "#{request.base_url}/#{@link.short_url}"
   rescue ActiveRecord::RecordNotFound
     render_404
   end

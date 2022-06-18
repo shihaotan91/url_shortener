@@ -28,7 +28,7 @@ class Link < ApplicationRecord
   end
 
   def generate_short_url
-    message = "#{long_url}_#{ENV['SALT']}_#{salt}"
+    message = "#{long_url}_#{salt}"
     self.short_url = ShortUrlGenerator.new(message).generate
   end
 end

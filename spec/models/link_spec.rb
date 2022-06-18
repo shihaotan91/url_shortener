@@ -47,7 +47,7 @@ RSpec.describe Link, type: :model do
     context 'generate_short_url' do
       it 'it sanitizes the long url before saving it' do
         link = Link.create!(long_url: unsanitized_url)
-        message = "#{link.long_url}_#{ENV["SALT"]}_#{stubbed_salt}"
+        message = "#{link.long_url}_#{stubbed_salt}"
         expect(link.short_url).to eq(ShortUrlGenerator.new(message).generate)
       end
     end
