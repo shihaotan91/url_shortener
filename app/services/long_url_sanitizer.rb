@@ -8,7 +8,6 @@ class LongUrlSanitizer
 
     remove_white_spaces
     add_leading_http
-    add_trailing_default_domain
 
     @sanitized_url
   end
@@ -18,10 +17,6 @@ class LongUrlSanitizer
   end
 
   def add_leading_http
-    @sanitized_url = "http://#{@sanitized_url}" unless @sanitized_url.match(/https?:\/\//)
-  end
-
-  def add_trailing_default_domain
-    @sanitized_url = "#{@sanitized_url}.com" unless @sanitized_url.match(/\.[a-z]+$/)
+    @sanitized_url = "http://#{@sanitized_url}" unless ['http://', 'https://'].any? { |s| @sanitized_url.start_with?(s) }
   end
 end

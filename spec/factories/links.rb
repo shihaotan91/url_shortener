@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :link do
-    long_url { SecureRandom.hex(10) }
+    long_url { "#{SecureRandom.alphanumeric(10)}.com" }
   end
 end

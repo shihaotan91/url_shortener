@@ -23,7 +23,7 @@ RSpec.describe Link, type: :model do
   end
 
   describe 'callbacks' do
-    let(:unsanitized_url) { 'helloworld' }
+    let(:unsanitized_url) { 'helloworld.com' }
     let(:stubbed_salt) { 'ABCDE' }
 
     before do

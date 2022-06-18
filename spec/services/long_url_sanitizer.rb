@@ -26,21 +26,4 @@ RSpec.describe LongUrlSanitizer do
       end
     end
   end
-
-  context 'add_trailing_default_domain' do
-    let(:sanitized_sg_url) { 'http://helloworld.sg' }
-
-    context 'when url does not have a trailing domain' do
-      it 'adds trailing default domain to it' do
-        url = 'http://helloworld'
-        expect(described_class.new(url).sanitize).to eq sanitized_url
-      end
-    end
-
-    context 'when url have leading http' do
-      it 'retains the existing url' do
-        expect(described_class.new(sanitized_sg_url).sanitize).to eq sanitized_sg_url
-      end
-    end
-  end
 end
