@@ -1,4 +1,4 @@
-<%= form_for @link do |form| %>
+<%= form_with model: @link, local: true do |form| %>
   <%= form.label :long_url, "Enter long url to shorten" %>
   <%= form.text_field :long_url %>
   <%= form.submit "Create" %>
