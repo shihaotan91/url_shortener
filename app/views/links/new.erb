@@ -3,4 +3,4 @@
   <%= form.submit "Create" %>
 <% end %>
 
-<%= @link.errors.full_messages.to_sentence %>
+<%= @link.errors.messages[:long_url].to_sentence %>

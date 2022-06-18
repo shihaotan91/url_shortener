@@ -13,7 +13,7 @@ class LongUrlSanitizer
   end
 
   def remove_white_spaces
-    @sanitized_url = @long_url.downcase.gsub(/\s+/, '')
+    @sanitized_url = @long_url.downcase.gsub(' ', '')
   end
 
   def add_leading_http
