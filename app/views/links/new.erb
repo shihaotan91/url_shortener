@@ -1,4 +1,5 @@
 <%= form_for @link do |form| %>
+  <%= form.label :long_url, "Enter long url to shorten" %>
   <%= form.text_field :long_url %>
   <%= form.submit "Create" %>
 <% end %>
