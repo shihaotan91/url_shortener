@@ -14,5 +14,5 @@ domain_list = URI.open(DOMAIN_LIST).as_json
 domain_list.each do |domain|
   next unless domain.match(/^[a-zA-Z]+$/)
 
-  Domain.create!(name: domain.downcase.strip)
+  Domain.find_or_create_by!(name: domain.downcase.strip)
 end
