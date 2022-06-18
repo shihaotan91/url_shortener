@@ -9,7 +9,7 @@ class LongUrlValidator
     remove_white_spaces
     remove_prefix
 
-    valid_address_format?
+    valid_address_format? && valid_domain_name?
   end
 
   def remove_white_spaces
@@ -24,5 +24,10 @@ class LongUrlValidator
 
   def valid_address_format?
     @long_url.match(/^[0-9a-z]+.\.[a-z]+$/)
+  end
+
+  def valid_domain_name?
+    url_domain_name = @long_url.split('.').last
+    Domain.find_by(name: url_domain_name).present?
   end
 end
