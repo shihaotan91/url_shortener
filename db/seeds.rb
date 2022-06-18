@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'open-uri'
+
+domain_list = URI.open(ENV['DOMAIN_LIST']).as_json
+domain_list.each do |domain|
+  next unless domain.match(/^[a-zA-Z]+$/)
+
+  Domain.create!(name: domain.downcase.strip)
+end
