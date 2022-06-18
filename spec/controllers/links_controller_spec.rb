@@ -16,13 +16,15 @@ RSpec.describe LinksController, type: :controller do
   end
 
   describe 'POST create' do
-    describe 'when param is valid' do
-      let(:params) { { link: { long_url: 'https://google.com' } } }
-      let(:created_link) { Link.find_by(long_url: params[:link][:long_url]) }
+    let(:params) { { link: { long_url: long_url } } }
 
-      before do
-        post :create, params: params
-      end
+    before do
+      post :create, params: params
+    end
+
+    describe 'when param is valid' do
+      let(:long_url) { 'https://google.com' }
+      let(:created_link) { Link.find_by(long_url: params[:link][:long_url]) }
 
       it 'creates a new link' do
         expect(Link.count).to eq 1
@@ -34,13 +36,26 @@ RSpec.describe LinksController, type: :controller do
         expect(assigns(:link)).to eq(created_link)
       end
     end
+
+    describe 'when param is invalid' do
+      let(:long_url) { 'google' }
+
+      it 'renders the new page with error message' do
+        is_expected.to render_template(:new)
+        expect(assigns(:link).errors.messages[:long_url]).to eq ["Unable to shortern invalid url"]
+      end
+    end
   end
 
   describe 'GET show' do
     let(:created_link) { FactoryBot.create(:link) }
 
+    before do
+      get :show, params: { id: id }
+    end
+
     describe 'when link exist' do
-      before { get :show, params: { id: created_link.id } }
+      let(:id) { created_link.id }
 
       it 'renders the show page' do
         is_expected.to render_template(:show)
@@ -50,7 +65,7 @@ RSpec.describe LinksController, type: :controller do
     end
 
     describe 'when link does not' do
-      before { get :show, params: { id: 0 } }
+      let(:id) { 0 }
 
       it 'renders the 404 page' do
         expect(response.status).to eq(404)
