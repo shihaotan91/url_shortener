@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LongUrlValidator
   def initialize(long_url)
     @long_url = long_url

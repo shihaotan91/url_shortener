@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LinksController < ApplicationController
   def new
     @link = Link.new
@@ -18,7 +20,7 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @short_url = "#{request.base_url}/#{@link.short_url}"
   rescue ActiveRecord::RecordNotFound
-    render_404
+    render404
   end
 
   private

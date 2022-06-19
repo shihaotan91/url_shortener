@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,9 +10,9 @@
 
 require 'open-uri'
 
-DOMAIN_LIST = 'https://data.iana.org/TLD/tlds-alpha-by-domain.txt'.freeze
+DOMAIN_LIST = 'https://data.iana.org/TLD/tlds-alpha-by-domain.txt'
 
-domain_list = URI.open(DOMAIN_LIST).as_json
+domain_list = URI.parse(DOMAIN_LIST).open.as_json
 domain_list.each do |domain|
   next unless domain.match(/^[a-zA-Z]+$/)
 

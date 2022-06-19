@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RedirectController < ApplicationController
   def show
     link = Link.find_by(short_url: params['short_url'])
@@ -5,7 +7,7 @@ class RedirectController < ApplicationController
     if link.present?
       redirect_to link.long_url
     else
-      render_404
+      render404
     end
   end
 end
