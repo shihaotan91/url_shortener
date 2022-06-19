@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use postgres instead of sqlite
 gem 'pg', '1.2.2'
 
 # Use Active Storage variant
@@ -33,7 +34,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
+  # Prefer to use pru instead of byebug
   gem 'pry-rails'
 end
 
@@ -53,6 +54,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
+  # Gems for easier rspec testing
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
