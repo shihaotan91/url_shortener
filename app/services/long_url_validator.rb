@@ -23,11 +23,11 @@ class LongUrlValidator
   end
 
   def valid_address_format?
-    @long_url.match(/^[0-9a-z]+.\.[a-z]+$/)
+    @long_url.match(/^[0-9a-z]+.\.[a-z]+/)
   end
 
   def valid_domain_name?
-    url_domain_name = @long_url.split('.').last
-    Domain.find_by(name: url_domain_name).present?
+    url_domain_names = @long_url.split('.')[1..]
+    url_domain_names.all? { |name| Domain.find_by(name: name).present? }
   end
 end

@@ -5,8 +5,10 @@ RSpec.describe LongUrlValidator do
     let(:valid_urls) do
       [
         'https://google.sg',
-        'www.google.edu',
-        'google.com'
+        'http://google.com.sg',
+        'www.google.kr',
+        'google.com',
+        'nus.edu.sg'
       ]
     end
 
@@ -23,7 +25,10 @@ RSpec.describe LongUrlValidator do
         'https://google',
         'www.google',
         'google',
-        'google.123'
+        'google.invalid',
+        'google.invalid.com',
+        'nus.edu.invalid',
+        '<><><><>.com'
       ]
     end
 
