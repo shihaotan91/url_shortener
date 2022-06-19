@@ -6,7 +6,7 @@ Simple application to help shortern URLs and redirect user to the entered URL wi
 ## How to set up
 You need to have Rails, Node, Yarn and Postgres installed in your computer to run this application.
 
-If you already have, you can just clone the repo and run these commands chronologically.
+If you already do, you can just clone the repo and run these commands chronologically.
 
 ```
 - bundle install
@@ -36,24 +36,28 @@ I followed bitly.com way of validating the given URL.
 
 Leading https or www isn't required for the URL to be valid.
 
-However, it must have a alphanumeric address and a valid domain name.
+However, it must have a alphanumeric address and valid domain name(s).
 
 Examples of valid URLs
 
 ```
-https://google.com,
-www.nus.edu,
-yahoo.sg
-123456.io
+https://google.sg
+http://google.com.sg
+www.google.kr
+google.com
+nus.edu.sg
 ```
 
 Examples of invalid URLs
 
 ```
-https://google,
-www.google,
-google,
-google.invaliddomain
+https://google
+www.google
+google
+google.invalid
+google.invalid.com
+nus.edu.invalid
+<><><><>.com
 ```
 
 I've seeded a list of domain names to check if the given url is valid. 
