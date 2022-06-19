@@ -9,6 +9,7 @@ class LinksController < ApplicationController
       @link.save!
       redirect_to link_path(@link.id)
     else
+      flash.now[:error] = @link.errors.messages[:long_url].to_sentence
       render :new
     end
   end

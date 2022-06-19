@@ -25,6 +25,10 @@ gem 'jbuilder', '~> 2.7'
 # Use postgres instead of sqlite
 gem 'pg', '1.2.2'
 
+gem 'slim-rails'
+
+gem 'bootstrap', '~> 5.1.3'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

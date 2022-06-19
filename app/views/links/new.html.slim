@@ -1,0 +1,9 @@
+.container-fluid
+  .row.justify-content-center
+    .col-md-3
+      = form_with model: @link, local: true do |form|
+        .form_field = form.label :long_url, "Enter long url to shorten:"
+        .form_field = form.text_field :long_url
+        .form_field = form.submit "Create"
+
+      = flash[:error]
