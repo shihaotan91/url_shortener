@@ -2,5 +2,6 @@
   .row.justify-content-center
     .col-md-3
       .url = @link.long_url
-      .url = @short_url
+      a.url href="#{@short_url}" target='_blank'
+        = @short_url
       .back = button_to "Back", new_link_path, method: :get

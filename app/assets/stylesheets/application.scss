@@ -1,2 +1,11 @@
 @import 'bootstrap';
 @import 'controllers/**/*';
+
+body {
+  background: grey;
+}
+
+.container-fluid {
+  padding: 20%;
+  color: white;
+}
