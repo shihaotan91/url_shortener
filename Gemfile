@@ -5,8 +5,6 @@ ruby '2.7.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.0.5'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -24,9 +22,9 @@ gem 'jbuilder', '~> 2.7'
 
 # Use postgres instead of sqlite
 gem 'pg', '1.2.2'
-
+# Use slim for view files
 gem 'slim-rails'
-
+# Bootstrap for easy styling
 gem 'bootstrap', '~> 5.1.3'
 
 # Use Active Storage variant
@@ -38,7 +36,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # Prefer to use pru instead of byebug
+  # Prefer to use pry instead of byebug
   gem 'pry-rails'
 end
 
@@ -58,7 +56,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
-  # Gems for easier rspec testing
+  # Gems for rspec testing
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'factory_bot_rails'
