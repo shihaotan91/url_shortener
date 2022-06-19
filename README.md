@@ -61,3 +61,17 @@ I've seeded a list of domain names to check if the given url is valid.
 The list can be found [HERE](https://data.iana.org/TLD/tlds-alpha-by-domain.txt).
 
 You can look at the LongUrlValidator class for more information on how URLs are validated.
+
+## Generating short URLs
+
+I wanted to make sure that generated short URLs are all unique but not completely random.
+
+So I added a `salt` column to the `Link` table and generated the short URLs by combining the salt with the long URLs.
+
+This way, the short URLs can all be unique even if two `Links` are created with the same long URLs.
+
+At the same time, if we somehow lose all the short URLs, we can still generate them again with the long URLs and salt. 
+
+## Tests
+
+Wrote tests for models, controllers and services.
