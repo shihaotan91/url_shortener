@@ -17,6 +17,7 @@ RSpec.describe Link, type: :model do
       it { is_expected.to validate_presence_of(:salt) }
       it { is_expected.to validate_presence_of(:short_url) }
       it { is_expected.to validate_uniqueness_of(:short_url) }
+      it { is_expected.to validate_length_of(:short_url).is_equal_to(6) }
     end
   end
 
