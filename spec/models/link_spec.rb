@@ -10,9 +10,7 @@ RSpec.describe Link, type: :model do
   describe 'validations' do
     context 'disable callbacks' do
       before do
-        allow_any_instance_of(Link).to receive(:sanitize_long_url)
-        allow_any_instance_of(Link).to receive(:generate_salt)
-        allow_any_instance_of(Link).to receive(:generate_short_url)
+        allow_any_instance_of(Link).to receive(:process_link)
       end
 
       it { is_expected.to validate_presence_of(:long_url) }
@@ -23,32 +21,14 @@ RSpec.describe Link, type: :model do
   end
 
   describe 'callbacks' do
-    let(:unsanitized_url) { 'helloworld.com' }
-    let(:stubbed_salt) { 'ABCDE' }
-
-    before do
-      allow(SecureRandom).to receive(:hex).and_return(stubbed_salt)
-    end
-
-    context 'sanitize_long_url' do
-      it 'it sanitizes the long url before saving it' do
-        link = Link.create!(long_url: unsanitized_url)
-        expect(link.long_url).to eq(LongUrlSanitizer.new(unsanitized_url).sanitize)
+    context 'process_link' do
+      before do
+        allow(ProcessLink).to receive(:new).and_return(OpenStruct.new(call: true))
+        Link.new(long_url: 'helloworld.com').valid?
       end
-    end
 
-    context 'generate_salt' do
-      it 'it sanitizes the long url before saving it' do
-        link = Link.create!(long_url: unsanitized_url)
-        expect(link.salt).to eq(stubbed_salt)
-      end
-    end
-
-    context 'generate_short_url' do
-      it 'it sanitizes the long url before saving it' do
-        link = Link.create!(long_url: unsanitized_url)
-        message = "#{link.long_url}_#{stubbed_salt}"
-        expect(link.short_url).to eq(ShortUrlGenerator.new(message).generate)
+      it 'triggers the ProcessLink operation' do
+        expect(ProcessLink).to have_received(:new)
       end
     end
   end
