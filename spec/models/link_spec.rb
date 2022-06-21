@@ -25,7 +25,7 @@ RSpec.describe Link, type: :model do
     context 'process_link' do
       before do
         allow(ProcessLink).to receive(:new).and_return(OpenStruct.new(call: true))
-        Link.new(long_url: 'helloworld.com').valid?
+        Link.create(long_url: 'helloworld.com')
       end
 
       it 'triggers the ProcessLink operation' do
