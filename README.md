@@ -26,7 +26,7 @@ Go to `localhost:XXXX/links/new` to shorten a new URL.
 
 If your URL is valid, it will redirect you to `localhost:XXXX/links/:id` to view the shortened URL.
 
-You can then copy and paste the URL(eg. `localhost:XXXX/123asd`) on your browser to redirect you to the original page.
+You can then click on the hyperlinked generated URL(eg. `localhost:XXXX/123asd`) on your browser to redirect you to the original page.
 
 Entering a URL that doesn't have a valid short code will redirect you to the rails 404 page.
 
